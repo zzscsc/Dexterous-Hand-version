@@ -3,3 +3,6 @@ lr changed
 配好了dp3环境，
 想用maniskill生成数据。服务器驱动太老了。于是直接用cpu渲染
 下载maniskill演示失败，
+
+尝试复现OHRC，
+配环境不会下IssacLab遂放弃
