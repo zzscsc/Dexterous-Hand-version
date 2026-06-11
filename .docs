@@ -1,3 +1,5 @@
+zsc日志
+
 lr changed
 
 配好了dp3环境，
@@ -10,4 +12,14 @@ dexmv已跑
 配环境不会下IssacLab遂放弃,待完成
 
 尝试dexjoco中，进行到Download model checkpoints这一步
+
+尝试ultresexgrasp
+尝试metafine学习了其端到端pipeline：示范-》合并-》渲染
+
+6.11
+准备测试
+VITRA 或 UniDex
+Dexora）双臂+双手操作，这是目前唯一开源的方案
+
+EgoScale (NVIDIA) (2026年2月): 用海量人类视频预训练。核心思路是通过“缩放定律”证明：人类视频数据量越大，机器人表现越好
 
