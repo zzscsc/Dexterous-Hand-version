@@ -23,3 +23,56 @@ Dexora）双臂+双手操作，这是目前唯一开源的方案
 
 EgoScale (NVIDIA) (2026年2月): 用海量人类视频预训练。核心思路是通过“缩放定律”证明：人类视频数据量越大，机器人表现越好
 
+
+6.13
+dexjoco参数保存在config.yaml
+batch_size: 32
+single_arm_steps: 30000
+dual_arm_steps: 60000
+
+对batch_size: 1 # for tes
+下载预训练权重π0.5问题:network connection.
+解决方法：openpi的模型如果国内直接从GCS(Goole Cloud Storage)中下载遇到困难，可以在modelscope寻找网友上传的模型
+ln -s /home/ipad_3d/.cache/modelscope/hub/models/hairuoliu/pi05_base ./pi05_model#创建软链接
+
+
+
+
+
+
+cd /home/ipad_3d/zsc/dexjoco/openpi
+conda activate openpi
+
+# 创建输出目录
+mkdir -p /home/ipad_3d/zsc/checkpoints/pi05_base_action_dim_44
+
+# 运行转换脚本
+python scripts/convert_to_action_dim_44_model.py \
+    --input /home/ipad_3d/zsc/checkpoints/pi05_base/params \
+    --output /home/ipad_3d/zsc/checkpoints/pi05_base_action_dim_44/params
+
+组件	说明
+data/*.parquet	状态、动作等时序表格数据
+videos/*.mp4	多视角摄像头视频数据
+meta/info.json	数据集元信息（特征定义、帧率等）
+meta/stats.json	归一化统计量（mean, std）
+meta/episodes/*	每个 episode 的边界信息
+
+
+数据集下载最后一个磁盘不够了但是不妨碍
+file-000.mp4 ✓ (207M)
+
+file-001.mp4 ✓ (207M)
+
+file-002.mp4 ✓ (207M)
+
+file-003.mp4 ✓ (84M)
+
+数据集路径：/home/ipad_3d/zsc/datasets/dexjoco_lerobot_datasets/dexjoco_lerobot_datasets/
+
+
+
+老是联网查找 local_repo 于是给/data3/ipad_3d/miniconda3/envs/openpi/lib/python3.11/site-packages/lerobot/datasets/faxtory.py加上了
+local_files_only=True,
+ulity.py加上了
+LeRobot 库期望的数据集目录结构与 DexJoCo 实际提供的不一致。
