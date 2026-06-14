@@ -76,3 +76,4 @@ file-003.mp4 ✓ (84M)
 local_files_only=True,
 ulity.py加上了
 LeRobot 库期望的数据集目录结构与 DexJoCo 实际提供的不一致。
+dexjoco-data-converter手动调整你本地数据集的文件夹结构，使其符合 LeRobot 的期望（即 数据集根目录/meta/info.json 的结构）
